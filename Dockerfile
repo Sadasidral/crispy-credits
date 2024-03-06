@@ -1,15 +1,12 @@
-FROM python:3.9-alpine
+FROM python:3.11-slim
+ENV PORT 8000
+EXPOSE 8000
+WORKDIR /usr/src/app
 
-WORKDIR /app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN pip install -r requirements.txt
-
-RUN pip install gunicorn
-
-RUN pip install psycopg2-binary
-
-EXPOSE 8000
-
-RUN chmod +x /app/app-entrypoint.sh
+ENTRYPOINT ["python"]
+CMD ["app.py"]

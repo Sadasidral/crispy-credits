@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crispy-credits
+  labels:
+    app: crispy-credits
+  namespace: namespace-workflow-1709746269287
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crispy-credits
+  template:
+    metadata:
+      labels:
+        app: crispy-credits
+    spec:
+      containers:
+        - name: crispy-credits
+          image: acrworkflow1709746269287.azurecr.io/1709746269287-indioacr:latest
+          ports:
+            - containerPort: 8000
