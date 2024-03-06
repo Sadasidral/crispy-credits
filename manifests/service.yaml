@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: crispy-credits
+  namespace: namespace-workflow-1709746269287
+spec:
+  type: LoadBalancer
+  selector:
+    app: crispy-credits
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
